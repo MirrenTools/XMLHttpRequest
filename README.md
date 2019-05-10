@@ -1,0 +1,2 @@
+# XMLHttpRequest
+Ajax请求
