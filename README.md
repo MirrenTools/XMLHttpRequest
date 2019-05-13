@@ -36,15 +36,17 @@
 
 # 快捷请求方式
 ```html
- get请求方式
+ //get请求方式
+ //url = 请求路径
+ //successHandler = 成功处理器参数:返回结果
+ //errorHandler = 异常处理器参数:XMLHttpRequest
+ //options = 请求配置
  XhrRequest.get(url,successHandler, errorHandler, options);
-   url = 请求路径
-   successHandler = 成功处理器参数:返回结果
-   errorHandler = 异常处理器参数:XMLHttpRequest
-   options = 请求配置
- post或put或delete
+
+ //post或put或delete
+ //data = 请求数据
  XhrRequest.post(url,data, successHandler, errorHandler, options);
-   data = 请求数据
+
  使用示例:
  function testGet() {
      XhrRequest.get('http://localhost:8080/getJson',function (res) {
