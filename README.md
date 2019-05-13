@@ -33,3 +33,25 @@
  * timeoutHandler=超时处理器,没有参数();
  * requestFormatHandler=请求内容格式化处理器,接收参数(data),需要返回处理结果;
  * resultFormatHandler=返回结果内容格式化处理器,接收参数(dataType,XHR.responseText)
+
+# 快捷请求方式
+```html
+ get请求方式
+ XhrRequest.get(url,successHandler, errorHandler, options);
+   url = 请求路径
+   successHandler = 成功处理器参数:返回结果
+   errorHandler = 异常处理器参数:XMLHttpRequest
+   options = 请求配置
+ post或put或delete
+ XhrRequest.post(url,data, successHandler, errorHandler, options);
+   data = 请求数据
+ 使用示例:
+ function testGet() {
+     XhrRequest.get('http://localhost:8080/getJson',function (res) {
+       console.log(res);
+     },function (xhr) {
+       console.log(xhr)
+     });
+   }  
+   
+```

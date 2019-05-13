@@ -12,6 +12,11 @@
 <button onclick="testExecute('put','http://localhost:8080/put')">testPut</button>
 <button onclick="testExecute('post','http://localhost:8080/post')">testPost</button>
 <button onclick="testExecute('delete','http://localhost:8080/delete')">testDelete</button>
+<br><br>
+<button onclick="testGet()">testGet</button>
+<button onclick="testPut()">testPut</button>
+<button onclick="testPost()">testPost</button>
+<button onclick="testDelete()">testDelete</button>
 
 <br><br>
 <button onclick="dataFormat()">testDataFornatHandler</button>
@@ -46,6 +51,48 @@
       }
     });
   }
+
+  function testGet() {
+    XhrRequest.get('http://localhost:8080/getJson',function (res) {
+      console.log(res);
+    },function (xhr) {
+      console.log(xhr)
+    });
+  }
+
+  function testPost() {
+    var name = document.getElementById('name').value;
+    var value = document.getElementById('value').value;
+    var data = {'name': name, 'value': value};
+    XhrRequest.post('http://localhost:8080/post',data,function (res) {
+      console.log(res);
+    },function (xhr) {
+      console.log(xhr)
+    });
+  }
+
+  function testPut() {
+    var name = document.getElementById('name').value;
+    var value = document.getElementById('value').value;
+    var data = {'name': name, 'value': value};
+    XhrRequest.put('http://localhost:8080/put',data,function (res) {
+      console.log(res);
+    },function (xhr) {
+      console.log(xhr)
+    });
+  }
+
+  function testDelete() {
+    var name = document.getElementById('name').value;
+    var value = document.getElementById('value').value;
+    var data = {'name': name, 'value': value};
+    XhrRequest.deletes('http://localhost:8080/get',data,function (res) {
+      console.log(res);
+    },function (xhr) {
+      console.log(xhr)
+    });
+  }
+
 
   /**
    * 测试请求与响应结果格式化,
@@ -90,7 +137,6 @@
     var data = {'name': name, 'value': value};
     XhrRequest.execute({
       'url': 'http://localhost:8080/getJson',
-      'method': 'get',
       'data': data,
       'successHandler': function (res) {
         console.log(res);

@@ -1,7 +1,16 @@
 /**
+ * @author <a href="https://mirrentools.org">MirrenTools</a>
+ * @version 1.0.1
+ *
  * 请求示例:
  * <script src="XhrRequest.js"></script>
+ * 通用请求方式
  * XhrRequest.execute({options});
+ * get请求方式
+ * XhrRequest.get(url, successHandler, errorHandler, options);
+ * post或put或delete
+ * XhrRequest.post(url,data, successHandler, errorHandler, options);
+ *
  * options配置说明:
  * url=请求连接
  * method或type=请求方法,默认GET
@@ -21,6 +30,10 @@
 var XhrRequest = (function () {
   var Request = function () {
   };
+  /**
+   * 执行请求
+   * @param options
+   */
   Request.prototype.execute = function (options) {
     options = options || {};
     var url = options.url;
@@ -114,6 +127,74 @@ var XhrRequest = (function () {
       }
     };
   };
+
+  /**
+   * 通过GET方式请求数据
+   * @param url 请求路径
+   * @param successHandler 成功处理器
+   * @param errorHandler  失败处理器
+   * @param options 配置信息
+   */
+  Request.prototype.get = function (url, successHandler, errorHandler, options) {
+    options = options || {};
+    options.url = url;
+    options.successHandler = successHandler;
+    options.errorHandler = errorHandler;
+    this.execute(options);
+  };
+  /**
+   * 通过post方式请求数据
+   * @param url 请求路径
+   * @param data 请求的数据
+   * @param successHandler 成功处理器
+   * @param errorHandler  失败处理器
+   * @param options 配置信息
+   */
+  Request.prototype.post = function (url, data, successHandler, errorHandler, options) {
+    options = options || {};
+    options.url = url;
+    options.method = 'POST';
+    options.data = data;
+    options.successHandler = successHandler;
+    options.errorHandler = errorHandler;
+    this.execute(options);
+  };
+  /**
+   * 通过put方式请求数据
+   * @param url 请求路径
+   * @param data 请求的数据
+   * @param successHandler 成功处理器
+   * @param errorHandler  失败处理器
+   * @param options 配置信息
+   */
+  Request.prototype.put = function (url,data, successHandler, errorHandler, options) {
+    options = options || {};
+    options.url = url;
+    options.method = 'PUT';
+    options.data = data;
+    options.successHandler = successHandler;
+    options.errorHandler = errorHandler;
+    this.execute(options);
+  };
+  /**
+   * 通过delete方式请求数据
+   * @param url 请求路径
+   * @param data 请求的数据
+   * @param successHandler 成功处理器
+   * @param errorHandler  失败处理器
+   * @param options 配置信息
+   */
+  Request.prototype.deletes = function (url,data,  successHandler, errorHandler, options) {
+    options = options || {};
+    options.url = url;
+    options.method = 'DELETE';
+    options.data = data;
+    options.successHandler = successHandler;
+    options.errorHandler = errorHandler;
+    this.execute(options);
+  };
+
+
   if (Request.flag) {
     return Request.flag;
   }
